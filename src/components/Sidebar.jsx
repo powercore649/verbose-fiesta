@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 
 export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage, setActivePage, mobileMenuOpen, setMobileMenuOpen }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [accountMenuOpen, setAccountMenuOpen] = useState(false);
+  const [accountMenuOpen, setAccountMenuOpen] = useState(true); // <-- OUVERT PAR DÉFAUT
   const dropdownRef = useRef(null);
   const accountRef = useRef(null);
 
@@ -34,45 +34,14 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
     <nav className={`sidebar ${mobileMenuOpen ? 'mobile-open' : ''}`}>
 
       {/* HEADER */}
-      <div className="sidebar-header dashboard-sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+      <div className="sidebar-header dashboard-sidebar-header">
         <div className="sidebar-brand-block">
           <p className="sidebar-kicker">AI Moderation Platform</p>
           <h2 className="brand-text-glow">zyntra</h2>
         </div>
-        <button 
-          className="btn-icon mobile-only" 
-          onClick={closeMobileMenu}
-          style={{ background: 'none', border: 'none', color: '#DBDEE1', fontSize: '1.2rem', cursor: 'pointer' }}
-        >
+        <button className="btn-icon mobile-only" onClick={closeMobileMenu}>
           <i className="fa-solid fa-xmark"></i>
         </button>
-      </div>
-
-      {/* GUILD SELECTOR */}
-      <div className="guild-selector" id="guild-selector" ref={dropdownRef} onClick={() => setDropdownOpen(!dropdownOpen)}>
-        <img 
-          src={currentGuild?.icon ? `https://cdn.discordapp.com/icons/${currentGuild.id}/${currentGuild.icon}.png` : 'https://cdn.discordapp.com/embed/avatars/0.png'} 
-          alt="Guild" className="guild-icon" 
-        />
-        <span className="guild-name">{currentGuild?.name || 'Select Server'}</span>
-        <i className="fa-solid fa-chevron-down"></i>
-        
-        <div className={`guild-dropdown ${dropdownOpen ? 'active' : ''}`}>
-          {user?.allowedGuilds?.map(g => (
-            <div 
-              key={g.id} 
-              className="guild-option" 
-              onClick={(e) => { e.stopPropagation(); onSelectGuild(g.id); setDropdownOpen(false); closeMobileMenu(); }}
-            >
-              {g.icon ? (
-                <img src={`https://cdn.discordapp.com/icons/${g.id}/${g.icon}.png`} className="guild-icon" alt="" />
-              ) : (
-                <div className="guild-icon" style={{ background: '#5865F2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>#</div>
-              )}
-              <span className="guild-name">{g.name}</span>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* WORKSPACE */}
@@ -95,12 +64,12 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
           <span>Command Center</span>
         </li>
         <li className={activePage === 'docs' ? 'active' : ''} onClick={() => { setActivePage('docs'); closeMobileMenu(); }}>
-          <i className="fa-solid fa-book text-accent"></i>
+          <i className="fa-solid fa-book"></i>
           <span>Docs & Guides</span>
         </li>
       </ul>
 
-      {/* ACCOUNT SECTION */}
+      {/* ACCOUNT */}
       <div className="sidebar-section-label">Account</div>
 
       <div className="advanced-account" ref={accountRef}>
@@ -123,28 +92,13 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
           </div>
 
           <div className="account-item">
-            <i className="fa-solid fa-envelope"></i>
-            Email: <strong>{user?.email || "Not provided"}</strong>
-          </div>
-
-          <div className="account-item">
-            <i className="fa-solid fa-calendar"></i>
-            Created: <strong>{user?.createdAt || "Unknown"}</strong>
-          </div>
-
-          <div className="account-item">
-            <i className="fa-solid fa-clock"></i>
-            Last Login: <strong>{user?.lastLogin || "Unknown"}</strong>
-          </div>
-
-          <div className="account-item">
-            <i className="fa-solid fa-laptop-code"></i>
-            Active Sessions: <strong>{user?.sessions?.length || 1}</strong>
-          </div>
-
-          <div className="account-item">
             <i className="fa-solid fa-shield"></i>
-            Role: <strong>{user?.role || "User"}</strong>
+            Permissions: <strong>{user?.permissions?.length || 0}</strong>
+          </div>
+
+          <div className="account-item">
+            <i className="fa-solid fa-server"></i>
+            Guilds: <strong>{user?.allowedGuilds?.length}</strong>
           </div>
 
           <div className="account-item danger">
@@ -167,58 +121,27 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
         </div>
       </div>
 
-      {/* STYLES */}
       <style>{`
-        .advanced-account {
-          margin-top: 10px;
-          padding: 10px;
-        }
-
+        .advanced-account { padding: 10px; }
         .account-header {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          cursor: pointer;
-          padding: 10px;
-          border-radius: 8px;
+          display: flex; align-items: center; gap: 10px;
+          cursor: pointer; padding: 10px; border-radius: 8px;
           transition: background 0.2s;
         }
-
-        .account-header:hover {
-          background: rgba(255,255,255,0.08);
-        }
-
+        .account-header:hover { background: rgba(255,255,255,0.08); }
         .account-dropdown {
-          max-height: 0;
-          overflow: hidden;
+          max-height: 0; overflow: hidden;
           transition: max-height 0.3s ease;
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          margin-top: 5px;
+          display: flex; flex-direction: column; gap: 8px;
         }
-
-        .account-dropdown.open {
-          max-height: 400px;
-        }
-
+        .account-dropdown.open { max-height: 300px; }
         .account-item {
-          padding: 8px 12px;
-          border-radius: 6px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          gap: 10px;
+          padding: 8px 12px; border-radius: 6px;
+          display: flex; align-items: center; gap: 10px;
           transition: background 0.2s;
         }
-
-        .account-item:hover {
-          background: rgba(255,255,255,0.08);
-        }
-
-        .account-item.danger {
-          color: #ff6b6b;
-        }
+        .account-item:hover { background: rgba(255,255,255,0.08); }
+        .account-item.danger { color: #ff6b6b; }
       `}</style>
 
     </nav>
