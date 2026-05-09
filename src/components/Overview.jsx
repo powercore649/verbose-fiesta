@@ -126,7 +126,7 @@ export default function Overview({ selectedGuild }) {
             borderColor: 'rgba(255, 102, 178, 0.3)',
             borderWidth: 1,
             padding: 14,
-            displayColors: false,
+            displayColors: true,
             cornerRadius: 10,
             callbacks: {
               title: (items) => items[0].label,
