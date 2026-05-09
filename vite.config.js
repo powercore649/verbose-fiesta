@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'http://usa-1.aeroxdevs.in:1662',
         changeOrigin: true
       }
     }
