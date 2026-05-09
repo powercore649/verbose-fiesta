@@ -3,17 +3,12 @@ import React from 'react';
 export default function Docs() {
   const credits = [
     {
-      name: 'Devrock',
-      avatar: 'https://raw.githubusercontent.com/devrock07/devrock07/refs/heads/main/assets/HeadIcon.png',
-      github: 'https://github.com/devrock07',
-      discord: 'https://discord.com/users/959733702609494076'
+      name: 'dotdash_nova',
+      avatar: 'https://cdn.discordapp.com/attachments/1498007533263130726/1502700184470290634/vite.svg.png?ex=6a00aa1a&is=69ff589a&hm=1f3a4b524c9013e6716adcc4d93b255d122cf9e41457bf3c74888c9531aa14a8',
+      Server: 'https://discord.gg/xN7mWvYxtv',
+      Website: 'https://novacorpcorporation.vercel.app',
+      contact: 'https://discord.com/users/1149165064335675423'
     },
-    {
-      name: 'Foil',
-      avatar: 'https://avatars.githubusercontent.com/u/206226445?s=400&u=1240c5691ad5e11790198e28bd506431a92afb6a&v=4',
-      github: 'https://github.com/aryanshrai03',
-      discord: 'https://discord.com/users/1252101579855630346'
-    }
   ];
 
   const sections = [
@@ -70,7 +65,7 @@ export default function Docs() {
   return (
     <div className="docs-container animate-fade-in">
       <div className="docs-header">
-        <h1 className="glow-text">Zenith <span className="badge">Documentation</span></h1>
+        <h1 className="glow-text">Zyntra <span className="badge">Documentation</span></h1>
         <p className="subtitle">Everything you need to know about your elite moderation system.</p>
       </div>
 
@@ -85,16 +80,20 @@ export default function Docs() {
               <img src={person.avatar} alt={person.name} className="credit-avatar" />
               <div className="credit-info">
                 <h3>{person.name}</h3>
-                <p>Developer</p>
+                <p>Developer and owner of Zyntra bot, also Head of administration/owner of novacorp project</p>
               </div>
               <div className="credit-actions">
-                <a href={person.github} target="_blank" rel="noreferrer" className="credit-btn github">
-                  <i className="fa-brands fa-github"></i>
-                  GitHub
-                </a>
-                <a href={person.discord} target="_blank" rel="noreferrer" className="credit-btn discord">
+                <a href={person.github} target="_blank" rel="noreferrer" className="credit-btn discord">
                   <i className="fa-brands fa-discord"></i>
-                  Discord
+                  discord support
+                </a>
+                <a href={person.contact} target="_blank" rel="noreferrer" className="credit-btn contact">
+                  <i className="fa-brands fa-discord"></i>
+                  contact
+                </a>
+                  <a href={person.Website} target="_blank" rel="noreferrer" className="credit-btn Website">
+                  <i className="fa-brands fa-discord"></i>
+                  Website
                 </a>
               </div>
             </div>
@@ -194,4 +193,3 @@ export default function Docs() {
     </div>
   );
 }
-
