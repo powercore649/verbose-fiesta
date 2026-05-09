@@ -6,7 +6,7 @@ export default function LandingOverlay({ guilds, onSelectGuild }) {
   return (
     <div className="modal-overlay" style={{ zIndex: 1000, background: 'rgba(5,5,5,0.95)' }}>
       <div className="modal-card glass-panel pop-in" style={{ maxWidth: '600px', textAlign: 'center' }}>
-        <h2>Welcome to Zenith</h2>
+        <h2>Welcome to zyntra</h2>
         <p className="modal-subtitle">Select a server to manage its dashboard.</p>
         
         <div className="landing-grid mt-4">
