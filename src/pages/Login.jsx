@@ -51,12 +51,12 @@ export default function Login() {
             Z
           </span>
         </div>
-        <h2 className="brand-text-glow" style={{ margin: 0, paddingBottom: '5px' }}>ZENITH</h2>
+        <h2 className="brand-text-glow" style={{ margin: 0, paddingBottom: '5px' }}>zyntra</h2>
         <p>Premium Guild Management & Automation</p>
         
         {!status ? (
           <a href="/api/auth/login" className="btn-discord" style={{ textDecoration: 'none' }}>
-            <i className="fa-brands fa-discord"></i> Login with Discord
+            <i className="fa-brands fa-discord"></i> Login to zyntra with Discord
           </a>
         ) : (
           <div id="login-status">
