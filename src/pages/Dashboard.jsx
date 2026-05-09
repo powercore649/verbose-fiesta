@@ -43,7 +43,7 @@ export default function Dashboard() {
     }
 
     if (guilds.length === 0) {
-      alert("Access Denied: You do not have Administrator permissions in any Zenith servers.");
+      alert("Error: access Denied: You do not have Administrator permissions in any Zenith servers.");
       localStorage.removeItem('zenith_token');
       return navigate('/login');
     }
