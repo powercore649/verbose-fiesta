@@ -111,11 +111,6 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
           <span>Docs & Guides</span>
         </li>
 
-        <li className={activePage === 'changelog' ? 'active' : ''} onClick={(e) => handleClick(e, 'changelog')}>
-          <i className="fa-solid fa-clock-rotate-left"></i>
-          <span>Changelog</span>
-        </li>
-
       </ul>
 
       {/* ACCOUNT */}
