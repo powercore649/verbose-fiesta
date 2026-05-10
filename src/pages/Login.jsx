@@ -16,7 +16,7 @@ export default function Login() {
       localStorage.removeItem('zenith_guild_id');
       setStatus({ type: 'success', text: 'Authentication successful! Redirecting..' });
       setTimeout(() => {
-        navigate('/');
+        navigate('/dashboard');
       }, 1000);
     } else if (error) {
       setStatus({ type: 'error', text: `Authentication Failed: ${error}` });
