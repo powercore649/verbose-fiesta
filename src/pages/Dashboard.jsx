@@ -7,6 +7,7 @@ import AutoModeration from '../components/AutoModeration';
 import LandingOverlay from '../components/LandingOverlay';
 import Docs from '../components/Docs';
 import CommandCenter from '../components/CommandCenter';
+import AccountManager from '../components/AccountManager';
 
 function parseJwt(token) {
   try {
@@ -76,7 +77,8 @@ export default function Dashboard() {
     moderation: 'Server Moderation',
     automod: 'Auto Moderation',
     commands: 'Command Center',
-    docs: 'Documentation & Help'
+    docs: 'Documentation & Help',
+    account: 'Account Manager'
   };
 
   const requiresGuild = ['overview', 'moderation', 'automod'].includes(activePage);
@@ -148,6 +150,7 @@ export default function Dashboard() {
               {activePage === 'automod' && <AutoModeration selectedGuild={selectedGuild} />}
               {activePage === 'commands' && <CommandCenter />}
               {activePage === 'docs' && <Docs />}
+              {activePage === 'account' && <AccountManager user={user} />}
             </>
           )}
 

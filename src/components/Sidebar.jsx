@@ -91,6 +91,14 @@ export default function Sidebar({ user, selectedGuild, onSelectGuild, activePage
         </li>
       </ul>
 
+      <div className="sidebar-section-label">Account</div>
+      <ul className="nav-links" style={{ flex: 'none' }}>
+        <li className={activePage === 'account' ? 'active' : ''} onClick={() => { setActivePage('account'); closeMobileMenu(); }}>
+          <i className="fa-solid fa-user-gear"></i>
+          <span>Account Manager</span>
+        </li>
+      </ul>
+
       <div className="sidebar-footer-note">
         <span className="sidebar-footer-dot"></span>
         <span>Built for fast moderation, safer communities, and contributor-friendly ops.</span>
